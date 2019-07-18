@@ -19,9 +19,17 @@ function getLazyStudents() {
 
 }
 
+function getStudentsWithCourses() {
+  return db
+    .select('users.id', 'fname', 'lname', 'name')
+    .from('users')
+    .innerJoin('enrollments', 'users.id', 'enrollments.user_id')
+    .innerJoin('courses', 'courses.id', 'enrollments.course_id');
+}
+
 app.get('/bench', async (req, res, next) => {
   try {
-    const result = await getUsersInnerJoinEmails();
+    const result = await getStudentsWithCourses();
     res.json(result);
   } catch (error) {
     next(error);
