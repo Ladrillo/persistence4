@@ -8,8 +8,11 @@ exports.up = function (knex) {
     .createTable('emails', table => {
       table.increments();
       table.text('email', 128).unique().notNullable();
-      table.integer('user_id').notNullable();
-      table.foreign('user_id').references('users.id');
+      table.integer('user_id')
+        .unsigned()
+        .notNullable()
+        .references('id')
+        .inTable('users');
     })
     .createTable('courses', table => {
       table.increments();

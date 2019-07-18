@@ -7,11 +7,16 @@ app.use(express.json());
 
 function getUsersInnerJoinEmails() {
   // select * from users
-  return db('users')
-    // join emails on users.id = emails.user_id
-    .innerJoin('emails', 'users.id', 'emails.user_id');
+  // join emails on users.id = emails.user_id
 }
 
+function getEmptyCourses() {
+
+}
+
+function getLazyStudents() {
+
+}
 
 app.get('/bench', async (req, res, next) => {
   try {
