@@ -6,7 +6,9 @@ const app = express();
 app.use(express.json());
 
 function getUsersInnerJoinEmails() {
-  console.log('success');
+  return db("users")
+    .select("users.id", "fname", "lname", "email")
+    .join("emails", "users.id", "emails.user_id");
 }
 
 function getEmptyCourses() {
