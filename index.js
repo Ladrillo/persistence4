@@ -16,7 +16,7 @@ function getEmptyCourses() {
 }
 
 function getLazyStudents() {
-
+  // do it!!!!
 }
 
 function getStudentsWithCourses() {
